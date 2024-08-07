@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Meter Reading</title>
+    <link rel="stylesheet" href="meter_reading.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+</head>
+<body>
+   <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+            <h3>D<span>ERMS</span></h3>
+        </div>
+
+        <div class="side-content">
+            <div class="profile">
+                <div class="profile-img bg-img" style="background-image: url()"></div>
+                <h4>Nitin Tiwari</h4>
+                <small>Art Director</small>
+            </div>
+
+            <div class="side-menu" class="active">
+                <ul>
+                    <li>
+                       <a href="home.htm" >
+                            <span class="las la-home"></span>
+                            <small>Dashboard</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="profile.html">
+                            <span class="las la-user-alt"></span>
+                            <small>Profile</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="contact.html">
+                            <span class="las la-phone"></span>
+                            <small>Contact</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="http://google.com">
+                            <span class="las la-user-friends"></span>
+                            <small>Neighboring Grid</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="http://google.com">
+                            <span class="las la-clipboard-list"></span>
+                            <small>Meter Reading</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="http://google.com">
+                            <span class="las la-tasks"></span>
+                            <small>Leaderboard</small>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <header>
+            <div class="header-content">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                <div class="header-menu">
+                    <label for="">
+                        <span class="las la-search"></span>
+                    </label>
+
+                    <div class="notify-icon">
+                        <a href="#">
+                            <span class="las la-envelope"></span>
+                            <span class="notify">4</span>
+                        </a>
+                    </div>
+
+                    <div class="notify-icon">
+                        <a href="#">
+                            <span class="las la-bell"></span>
+                            <span class="notify">3</span>
+                        </a>
+                    </div>
+                        
+                    <!-- <div class="user">
+                        <div class="bg-img" style="background-image: url()"></div>
+
+                        <a href="sign_in.htm">
+                            <span class="las la-power-off"></span>
+                            <span>Logout</span>
+                        </a>
+                    </div> -->
+
+
+
+                    <div class="profile-dropdown">
+                        <button class="profile-button">
+                            <img src="bg.png" alt="Profile Picture">
+                            <span>Nitin Tiwari</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">Settings</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+
+            <div class="page-header">
+                <h1>Meter Reading</h1>
+                <small>Connection Meter Checking</small>
+            </div>
+
+            <div class="page-content">
+
+                <div class="container">
+                
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Meter id</th>
+                                <th>Meter Date</th>
+                                <th>Current Import</th>
+                                <th>Current Export</th>
+                                <th>Previous Import</th>
+                                <th>Previous Export</th>
+                                <th>Net Energy</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table rows will be added dynamically using JavaScript -->
+                        </tbody>
+                    </table>
+
+
+                
+            </div>
+        </main>
+
+    </div>
+</body>
+<script>
+    document.getElementById("logout").addEventListener("click", function() {
+    // Perform logout actions here
+    alert("Logout clicked!"); // Replace with actual logout logic
+});
+
+</script>
+</html>

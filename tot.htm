@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>TOT</title>
+    <link rel="stylesheet" href="tot.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+
+<body>
+    <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+            <h3>D<span>ERMS</span></h3>
+        </div>
+
+        <div class="side-content">
+            <div class="profile">
+                <div class="profile-img bg-img" style="background-image: url()"></div>
+                <h4>Nitin Tiwari</h4>
+                <small>Art Director</small>
+            </div>
+
+            <div class="side-menu">
+                <ul>
+                    <li>
+                        <a href="home.htm">
+                            <span class="las la-home"></span>
+                            <small>Dashboard</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <span class="las la-user-alt"></span>
+                            <small>Profile</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <span class="las la-phone"></span>
+                            <small>Contact</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://google.com">
+                            <span class="las la-user-friends"></span>
+                            <small>Neighboring Grid</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://google.com">
+                            <span class="las la-clipboard-list"></span>
+                            <small>Meter Reading</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://google.com">
+                            <span class="las la-tasks"></span>
+                            <small>Leaderboard</small>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                <div class="header-menu">
+                    <label for="">
+                        <span class="las la-search"></span>
+                    </label>
+
+                    <div class="notify-icon">
+                        <a href="#">
+                            <span class="las la-envelope"></span>
+                            <span class="notify">4</span>
+                        </a>
+                    </div>
+
+                    <div class="notify-icon">
+                        <a href="#">
+                            <span class="las la-bell"></span>
+                            <span class="notify">3</span>
+                        </a>
+                    </div>
+
+                    <!-- <div class="user">
+                        <div class="bg-img" style="background-image: url()"></div>
+
+                        <a href="sign_in.htm">
+                            <span class="las la-power-off"></span>
+                            <span>Logout</span>
+                        </a>
+                    </div> -->
+
+
+                    <div class="profile-dropdown">
+                        <button class="profile-button">
+                            <img src="bg.png" alt="Profile Picture">
+                            <span>Nitin Tiwari </span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">Settings</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <h1>Total Connection</h1>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Phone Number</th>
+                        <th>Aadhar</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be added dynamically using JavaScript -->
+                </tbody>
+            </table>
+            <form id="dataForm">
+                <input type="text" id="firstNameInput" placeholder="First Name" required>
+                <input type="text" id="lastNameInput" placeholder="Last Name" required>
+                <input type="text" id="cityInput" placeholder="City" required>
+                <input type="text" id="stateInput" placeholder="State" required>
+                <input type="text" id="addressInput" placeholder="Address" required>
+                <input type="date" id="dateInput" placeholder="Date" required>
+                <input type="text" id="phoneNumberInput" placeholder="Phone Number" required>
+                <input type="text" id="aadharInput" placeholder="Aadhar" required>
+                <button type="submit" id="addBtn">Add</button>
+                <button type="button" id="updateBtn" style="display: none;">Update</button>
+                <button type="button" id="cancelBtn" style="display: none;">Cancel</button>
+            </form>
+        </div>
+
+        <script>
+
+
+            document.getElementById("logout").addEventListener("click", function () {
+                // Perform logout actions here
+                alert("Logout clicked!"); // Replace with actual logout logic
+            });
+
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    const tableBody = document.querySelector('#dataTable tbody');
+                    const form = document.querySelector('#dataForm');
+                    const firstNameInput = document.querySelector('#firstNameInput');
+                    const lastNameInput = document.querySelector('#lastNameInput');
+                    const cityInput = document.querySelector('#cityInput');
+                    const stateInput = document.querySelector('#stateInput');
+                    const addressInput = document.querySelector('#addressInput');
+                    const dateInput = document.querySelector('#dateInput');
+                    const phoneNumberInput = document.querySelector('#phoneNumberInput');
+                    const aadharInput = document.querySelector('#aadharInput');
+                    const addBtn = document.querySelector('#addBtn');
+                    const updateBtn = document.querySelector('#updateBtn');
+                    const cancelBtn = document.querySelector('#cancelBtn');
+
+                    let editRowIndex = -1;
+
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault();
+
+                        const firstName = firstNameInput.value.trim();
+                        const lastName = lastNameInput.value.trim();
+                        const city = cityInput.value.trim();
+                        const state = stateInput.value.trim();
+                        const address = addressInput.value.trim();
+                        const date = dateInput.value.trim();
+                        const phoneNumber = phoneNumberInput.value.trim();
+                        const aadhar = aadharInput.value.trim();
+
+                        if (!firstName || !lastName || !city || !state || !address || !date || !phoneNumber || !aadhar) {
+                            alert('Please fill in all fields.');
+                            return;
+                        }
+
+                        if (editRowIndex === -1) {
+                            const newRow = `<tr>
+                                            <td>${firstName}</td>
+                                            <td>${lastName}</td>
+                                            <td>${city}</td>
+                                            <td>${state}</td>
+                                            <td>${address}</td>
+                                            <td>${date}</td>
+                                            <td>${phoneNumber}</td>
+                                            <td>${aadhar}</td>
+                                            <td>
+                                                <button class="edit-btn">Edit</button>
+                                                <button class="delete-btn">Delete</button>
+                                            </td>
+                                        </tr>`;
+                            tableBody.innerHTML += newRow;
+                        } else {
+                            const row = tableBody.rows[editRowIndex];
+                            row.cells[0].textContent = firstName;
+                            row.cells[1].textContent = lastName;
+                            row.cells[2].textContent = city;
+                            row.cells[3].textContent = state;
+                            row.cells[4].textContent = address;
+                            row.cells[5].textContent = date;
+                            row.cells[6].textContent = phoneNumber;
+                            row.cells[7].textContent = aadhar;
+
+                            addBtn.style.display = 'inline-block';
+                            updateBtn.style.display = 'none';
+                            cancelBtn.style.display = 'none';
+                            editRowIndex = -1;
+                        }
+
+                        firstNameInput.value = '';
+                        lastNameInput.value = '';
+                        cityInput.value = '';
+                        stateInput.value = '';
+                        addressInput.value = '';
+                        dateInput.value = '';
+                        phoneNumberInput.value = '';
+                        aadharInput.value = '';
+                    });
+
+                    tableBody.addEventListener('click', function (event) {
+                        const target = event.target;
+
+                        if (target.classList.contains('edit-btn')) {
+                            const row = target.closest('tr');
+                            const cells = row.cells;
+                            firstNameInput.value = cells[0].textContent;
+                            lastNameInput.value = cells[1].textContent;
+                            cityInput.value = cells[2].textContent;
+                            stateInput.value = cells[3].textContent;
+                            addressInput.value = cells[4].textContent;
+                            dateInput.value = cells[5].textContent;
+                            phoneNumberInput.value = cells[6].textContent;
+                            aadharInput.value = cells[7].textContent;
+                            editRowIndex = row.rowIndex - 1;
+                            addBtn.style.display = 'none';
+                            updateBtn.style.display = 'inline-block';
+                            cancelBtn.style.display = 'inline-block';
+                        } else if (target.classList.contains('delete-btn')) {
+                            if (confirm('Are you sure you want to delete this row?')) {
+                                const row = target.closest('tr');
+                                tableBody.removeChild(row);
+                                editRowIndex = -1;
+                            }
+                        }
+                    });
+
+                    cancelBtn.addEventListener('click', function () {
+                        addBtn.style.display = 'inline-block';
+                        updateBtn.style.display = 'none';
+                        cancelBtn.style.display = 'none';
+                        editRowIndex = -1;
+                        firstNameInput.value = '';
+                        lastNameInput.value = '';
+                        cityInput.value = '';
+                        stateInput.value = '';
+                        addressInput.value = '';
+                        dateInput.value = '';
+                        phoneNumberInput.value = '';
+                        aadharInput.value = '';
+                    });
+                });
+        </script>
+    </div>
+</body>
+
+</html>
